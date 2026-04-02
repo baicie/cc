@@ -1,0 +1,78 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+.turbo/
+out/
+
+# Lock files
+# bun.lockb (uncomment if you don't commit bun.lock)
+bun.lockb
+
+# Environment files
+.env
+.env.local
+.env.*.local
+.env.production
+.env.development
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+bun-debug.log
+
+# Cache
+.cache/
+.pnp/
+.pnp.js
+.yalc/
+yalc.lock
+
+# IDE
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+.vscode/
+.vscode/settings.json
+.vscode/extensions.json
+.vscode/launch.json
+.cursor/
+.cursor/rules/
+.cursor/skills/
+
+# TypeScript
+*.tsbuildinfo
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+
+# Debug
+.npm
+.node_repl_history
+*.tgz
+
+# Turborepo
+.turbo/
+
+# Rollup/Vite cache
+/.rollup.cache/
+.vite/
+
+# Claude Code specific
+.claude/
+.cclaude/
+sessions/
+memory/
+.history/
