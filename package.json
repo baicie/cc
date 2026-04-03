@@ -25,7 +25,7 @@
     "@anthropic-ai/sandbox-runtime": "*",
     "@anthropic-ai/sdk": "*",
     "@aws-sdk/client-bedrock-runtime": "*",
-    "@commander-js/extra-typings": "*",
+    "@commander-js/extra-typings": "13.x",
     "@growthbook/growthbook": "*",
     "@modelcontextprotocol/sdk": "*",
     "@opentelemetry/api": "*",
