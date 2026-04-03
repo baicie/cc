@@ -10,6 +10,8 @@ out/
 # Lock files
 # bun.lockb (uncomment if you don't commit bun.lock)
 bun.lockb
+pnpm-lock.yaml
+package-lock.json
 
 # Environment files
 .env

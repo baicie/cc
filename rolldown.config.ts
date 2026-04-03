@@ -1,11 +1,4 @@
 import { defineConfig } from 'rolldown';
-import resolve from '@rollup/plugin-node-resolve';
-import commonjs from '@rollup/plugin-commonjs';
-import typescript from '@rollup/plugin-typescript';
-import json from '@rollup/plugin-json';
-import replace from '@rollup/plugin-replace';
-import alias from '@rollup/plugin-alias';
-import terser from '@rollup/plugin-terser';
 import { builtinModules } from 'module';
 
 const production = process.env.NODE_ENV === 'production';
@@ -72,39 +65,6 @@ export default defineConfig({
     /\.node$/,
   ],
   plugins: [
-    alias({
-      entries: [
-        { find: 'react', replacement: 'react' },
-        { find: 'react-dom', replacement: 'react-dom' },
-      ],
-    }),
-    resolve({
-      extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
-      preferBuiltins: true,
-      browser: false,
-    }),
-    commonjs({
-      include: /node_modules/,
-      transformMixedEsModules: true,
-    }),
-    json(),
-    typescript({
-      tsconfig: './tsconfig.json',
-      compilerOptions: {
-        declaration: false,
-        declarationMap: false,
-        sourceMap: !production,
-      },
-      exclude: ['**/*.test.ts', '**/*.test.tsx'],
-    }),
-    replace({
-      preventAssignment: true,
-      values: {
-        'process.env.NODE_ENV': JSON.stringify(
-          production ? 'production' : 'development',
-        ),
-      },
-    }),
     production && terser({
       compress: {
         drop_console: false,
@@ -123,7 +83,6 @@ export default defineConfig({
       return false;
     },
     propertyReadSideEffects: false,
-    tryCatchDeoptimization: false,
   },
   onwarn(warning, warn) {
     if (warning.code === 'MODULE_LEVEL_DIRECTIVE') return;
