@@ -23,9 +23,6 @@
       "@/*": ["./src/*"]
     },
     "types": ["bun-types"],
-    "typesRemap": {
-      "react": ["node_modules/@types/react"]
-    }
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist", "**/*.test.ts", "**/*.test.tsx"],

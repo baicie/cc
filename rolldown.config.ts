@@ -1,9 +1,15 @@
 import { defineConfig } from 'rolldown';
 import { builtinModules } from 'module';
+import terser from '@rollup/plugin-terser';
 
 const production = process.env.NODE_ENV === 'production';
 
 export default defineConfig({
+  resolve: {
+    alias: {
+      'bun:bundle': '/Users/liuzhiwei/Desktop/workspace/git-code/cc/src/utils/bun-bundle-polyfill.ts',
+    },
+  },
   input: {
     main: './src/main.tsx',
     cli: './src/entrypoints/cli.tsx',
@@ -15,9 +21,10 @@ export default defineConfig({
     sourcemap: !production,
     chunkFileNames: '[name]-[hash].js',
     entryFileNames: '[name].js',
-    inlineDynamicImports: false,
+    codeSplitting: true,
     preserveModules: false,
     exports: 'named',
+    minify: false,
   },
   external: [
     ...builtinModules,
@@ -64,17 +71,6 @@ export default defineConfig({
     /node_modules/,
     /\.node$/,
   ],
-  plugins: [
-    production && terser({
-      compress: {
-        drop_console: false,
-        pure_funcs: ['console.debug'],
-      },
-      mangle: {
-        safari10: true,
-      },
-    }),
-  ].filter(Boolean),
   treeshake: {
     moduleSideEffects: (id) => {
       if (id.includes('node_modules')) return true;
